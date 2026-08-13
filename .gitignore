@@ -1,0 +1,5 @@
+﻿# Este repo solo distribuye el instalador (binario cerrado).
+# El codigo fuente no se publica.
+*.tar.gz
+SHA256SUMS
+.DS_Store
