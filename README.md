@@ -3,7 +3,7 @@
 Software propietario de **Elitech Solutions**. Todos los derechos reservados.
 Este repositorio distribuye el **instalador Linux** (binario cerrado). No incluye código fuente.
 
-[Descargar el último release](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/latest)
+[Último release](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/latest)
 
 ## Qué se licencia
 
@@ -20,19 +20,50 @@ Un binario x86_64 (glibc ≥ 2.28):
 
 El instalador detecta la familia (`debian` vs `rhel`) y configura `apt`/`dnf`, `ufw`/`firewalld` y systemd.
 
-## Instalación
+## Descarga de archivos
 
-1. Abre [Releases](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/latest) y descarga `screenshare-hub-1.0.0-linux-x86_64.tar.gz` y `SHA256SUMS`.
-2. Verifica e instala:
+Archivos del release [v1.0.0](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/tag/v1.0.0):
+
+- [screenshare-hub-1.0.0-linux-x86_64.tar.gz](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.0.0/screenshare-hub-1.0.0-linux-x86_64.tar.gz)
+- [SHA256SUMS](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.0.0/SHA256SUMS)
+
+Con `curl`:
 
 ```bash
+curl -fL -O https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.0.0/screenshare-hub-1.0.0-linux-x86_64.tar.gz
+curl -fL -O https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.0.0/SHA256SUMS
 sha256sum -c SHA256SUMS
+```
+
+Con `wget`:
+
+```bash
+wget https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.0.0/screenshare-hub-1.0.0-linux-x86_64.tar.gz
+wget https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.0.0/SHA256SUMS
+sha256sum -c SHA256SUMS
+```
+
+También puedes bajarlos desde el navegador en la [página del release](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/tag/v1.0.0).
+
+## Instalación
+
+Hace falta root. `install.sh` detecta Ubuntu/Debian (`apt`, `ufw`) o RHEL/Rocky/CentOS/AlmaLinux (`dnf`/`yum`, `firewalld`), instala el servicio systemd y abre los puertos.
+
+```bash
 tar -xzf screenshare-hub-1.0.0-linux-x86_64.tar.gz
 cd screenshare-hub-1.0.0-linux-x86_64
 sudo ./install.sh
 ```
 
-3. Abre `https://<IP>:8443/admin`, inicia sesión con tu cuenta Elitech y registra las TVs.
+Comprueba el servicio:
+
+```bash
+sudo systemctl status screenshare-hub
+```
+
+Abre `https://<IP>:8443/admin`, inicia sesión con tu cuenta Elitech y registra las TVs.
+
+Rutas: binario en `/opt/elitech/screenshare-hub/`, datos y licencia en `/var/lib/elitech/screenshare-hub/`, config en `/etc/elitech/screenshare-hub.env`.
 
 ## Desinstalar
 
