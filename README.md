@@ -5,10 +5,12 @@ Este repositorio distribuye el **instalador Linux** (binario cerrado). No incluy
 
 [Último release](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/latest)
 
-## Novedades v1.2.0
+## Novedades v1.3.0
 
-- **Actualizar desde admin** → Sistema: buscar releases, progreso de descarga, **Actualizar ahora**, notas y reintentos.
-- Instalación automática con verificación SHA256 y reinicio del servicio (Linux).
+- **El PIN de la TV es obligatorio**: nadie puede iniciar una transmisión sin el PIN que muestra el televisor, y el listado público ya no lo filtra. Anti-fuerza bruta: 10 intentos por IP y minuto.
+- **HTTP para TVs Android**: `HTTP_PORT=8080` en `/etc/elitech/screenshare-hub.env` (opt-in, desactivado por defecto) permite abrir `http://<IP>:8080/tv` en TVs que no aceptan el certificado autofirmado. Desactivado por defecto.
+- **Corregido**: compartir pestaña y audio del sistema (el audio rompía la transmisión); renegociación de audio tardío; autoplay bloqueado muestra el botón "Activar sonido".
+- Actualización desde admin (v1.2.0): buscar releases, progreso de descarga, **Actualizar ahora** con verificación SHA256.
 
 ## Qué se licencia
 
@@ -27,24 +29,24 @@ El instalador detecta la familia (`debian` vs `rhel`) y configura `apt`/`dnf`, `
 
 ## Descarga de archivos
 
-Archivos del release [v1.2.0](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/tag/v1.2.0):
+Archivos del release [v1.3.0](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/tag/v1.3.0):
 
-- [screenshare-hub-1.2.0-linux-x86_64.tar.gz](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.2.0/screenshare-hub-1.2.0-linux-x86_64.tar.gz)
-- [SHA256SUMS](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.2.0/SHA256SUMS)
+- [screenshare-hub-1.3.0-linux-x86_64.tar.gz](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.3.0/screenshare-hub-1.3.0-linux-x86_64.tar.gz)
+- [SHA256SUMS](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.3.0/SHA256SUMS)
 
 Con `curl`:
 
 ```bash
-curl -fL -O https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.2.0/screenshare-hub-1.2.0-linux-x86_64.tar.gz
-curl -fL -O https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.2.0/SHA256SUMS
+curl -fL -O https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.3.0/screenshare-hub-1.3.0-linux-x86_64.tar.gz
+curl -fL -O https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.3.0/SHA256SUMS
 sha256sum -c SHA256SUMS
 ```
 
 ## Instalación
 
 ```bash
-tar -xzf screenshare-hub-1.2.0-linux-x86_64.tar.gz
-cd screenshare-hub-1.2.0-linux-x86_64
+tar -xzf screenshare-hub-1.3.0-linux-x86_64.tar.gz
+cd screenshare-hub-1.3.0-linux-x86_64
 sudo ./install.sh
 ```
 
@@ -53,7 +55,7 @@ sudo ./install.sh
 Desde `/admin` → **Sistema** → **Buscar actualizaciones** → **Actualizar ahora**, o:
 
 ```bash
-sudo /opt/elitech/screenshare-hub/update.sh /ruta/screenshare-hub-1.2.0-linux-x86_64.tar.gz
+sudo /opt/elitech/screenshare-hub/update.sh /ruta/screenshare-hub-1.3.0-linux-x86_64.tar.gz
 ```
 
 ## Licencia de uso
