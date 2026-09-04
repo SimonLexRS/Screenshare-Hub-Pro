@@ -5,12 +5,13 @@ Este repositorio distribuye el **instalador Linux** (binario cerrado). No incluy
 
 [Último release](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/latest)
 
-## Novedades v1.4.1
+## Novedades v1.4.2
 
-- **Configuración de puertos desde Admin**: interfaz en `/admin` para personalizar los puertos HTTP y HTTPS, activar o desactivar HTTPS y reiniciar el hub con redirección automática.
-- **Redirección automática tras actualizar**: el panel admin sondea la disponibilidad del nuevo puerto y redirige automáticamente sin error `ERR_CONNECTION_REFUSED`.
-- **Compatibilidad dual de puertos**: preserva HTTPS en puerto 8443 si existen certificados previos, junto al nuevo puerto 80 HTTP.
-- **Actualización fiable en Linux**: `update.sh` desacoplado vía `systemd-run` y soporte nativo para puerto privilegiado 80 en usuario `screenshare` con `CAP_NET_BIND_SERVICE`.
+- **Botón para presentar en pantallas no enroladas**: en la raíz `http://<IP>` se añade un botón destacado "Presione aquí para presentar" exclusivo para pantallas o navegadores aún no enrolados, facilitando el acceso directo al presentador (`/share`) para usuarios en PC.
+- **Dirección limpia en pantalla**: visualización directa y destacada de la URL del servidor `http://<IP>` sin el sufijo `/tv`.
+- **Guía paso a paso para el usuario**: instrucciones visuales en `/share` detallando cómo conectarse a la TV, ingresar el PIN y transmitir con audio del sistema.
+- **Corrección de TVs pendientes en Admin**: solución al error en el panel admin que impedía visualizar y aprobar las pantallas pendientes.
+- **Estabilidad de registro de TVs**: las sesiones de TV pendientes con conexión activa no son purgadas por el TTL del PIN.
 
 ## Qué se licencia
 
@@ -29,24 +30,24 @@ El instalador detecta la familia (`debian` vs `rhel`) y configura `apt`/`dnf`, `
 
 ## Descarga de archivos
 
-Archivos del release [v1.4.1](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/tag/v1.4.1):
+Archivos del release [v1.4.2](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/tag/v1.4.2):
 
-- [screenshare-hub-1.4.1-linux-x86_64.tar.gz](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.4.1/screenshare-hub-1.4.1-linux-x86_64.tar.gz)
-- [SHA256SUMS](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.4.1/SHA256SUMS)
+- [screenshare-hub-1.4.2-linux-x86_64.tar.gz](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.4.2/screenshare-hub-1.4.2-linux-x86_64.tar.gz)
+- [SHA256SUMS](https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.4.2/SHA256SUMS)
 
 Con `curl`:
 
 ```bash
-curl -fL -O https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.4.1/screenshare-hub-1.4.1-linux-x86_64.tar.gz
-curl -fL -O https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.4.1/SHA256SUMS
+curl -fL -O https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.4.2/screenshare-hub-1.4.2-linux-x86_64.tar.gz
+curl -fL -O https://github.com/SimonLexRS/Screenshare-Hub-Pro/releases/download/v1.4.2/SHA256SUMS
 sha256sum -c SHA256SUMS
 ```
 
 ## Instalación
 
 ```bash
-tar -xzf screenshare-hub-1.4.1-linux-x86_64.tar.gz
-cd screenshare-hub-1.4.1-linux-x86_64
+tar -xzf screenshare-hub-1.4.2-linux-x86_64.tar.gz
+cd screenshare-hub-1.4.2-linux-x86_64
 sudo ./install.sh
 ```
 
@@ -55,7 +56,7 @@ sudo ./install.sh
 Desde `/admin` → **Sistema** → **Buscar actualizaciones** → **Actualizar ahora**, o:
 
 ```bash
-sudo /opt/elitech/screenshare-hub/update.sh /ruta/screenshare-hub-1.4.1-linux-x86_64.tar.gz
+sudo /opt/elitech/screenshare-hub/update.sh /ruta/screenshare-hub-1.4.2-linux-x86_64.tar.gz
 ```
 
 ## Licencia de uso
